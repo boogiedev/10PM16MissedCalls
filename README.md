@@ -21,10 +21,10 @@ Yelp API Aggregator for when you hungry at 10PM and woke up to 16 Missed calls
 
 ## Usage
 
-1: Git Clone
-2: Put Credentials JSON in Folder
-3: Navigate to folder and pip install requirements `pip install -r requirements`
-4: Run app locally `python3 application.py`
+1: Git Clone </br>
+2: Put Credentials JSON in Folder </br>
+3: Navigate to folder and pip install requirements `pip install -r requirements` </br>
+4: Run app locally `python3 application.py` </br>
 
 ## Notes
 
