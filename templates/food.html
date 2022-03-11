@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="wrapper astonish animated fadeInDown">
+  <h1><strong>Food</strong>Here</h1>
+</div>
+
+<div>
+  <p> Let's find some food </p>
+</div>
+
+<form action="{{ url_for("results")}}" method="post">
+<label for="location">Location:</label>
+<input type="text" id="location" name="loc" placeholder="Optional"> </br>
+<label for="location">Type of Food:</label>
+<input type="text" id="type" name="type" placeholder="Pizza">
+<button type="submit">Submit</button>
+
+<!-- <div class='places'>
+  <table>
+  {% for item in places %}
+  <TR>
+     <TD class="c2"><p>{{ item.0 }}  </p></TD>
+     <TD class="c3"><a href="{{ item.1}}"><img class="result_img" src="{{ item.2 }}"></img></a></TD>
+  </TR>
+  {% endfor %}
+  </table>
+
+</div> -->
+
+
+{% endblock body %}
