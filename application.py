@@ -14,7 +14,7 @@ simple_geoip = SimpleGeoIP(application)
 
 
 # Param Constructor
-def param_constructor(term:str="pizza", location:str="", limit:int=10, ip_data:dict=simple_geoip):
+def param_constructor(term:str="pizza", location:str="", limit:int=10, ip_data:dict=simple_geoip, at_ten:bool=True):
     """Given search terms, construct parameters for API.
     Args:
         term (str): search term, can provide "food", or "burritos".
@@ -31,7 +31,9 @@ def param_constructor(term:str="pizza", location:str="", limit:int=10, ip_data:d
     unixtime = time.mktime(date.timetuple())
 
 
-    param = {'term':term, 'limit':limit, 'sort_by':'distance', 'open_at':int(unixtime)}
+    param = {'term':term, 'limit':limit, 'sort_by':'distance'}
+    if at_ten:
+        param['open_at'] = int(unixtime)
     # Check if location given
     if not location:
         data = simple_geoip.get_geoip_data()
@@ -69,9 +71,9 @@ def results():
        location = request.form.get("loc")
        type = request.form.get("type")
     if location and type:
-        params = param_constructor(term=type, location=location)
+        params = param_constructor(term=type, location=location, at_ten=False)
     else:
-        params = param_constructor()
+        params = param_constructor(at_ten=False)
     print(params)
     data = yelp_getter.yelp_request(url_params=params)
     # print(data)
